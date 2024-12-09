@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Registration Form",
+        "first_name": "text",
+        "last_name": "text",
+        "email": "email",
+        "birth_date": "date"
+    },
+    {
+        "name": "Feedback Form",
+        "full_name": "text",
+        "email": "email",
+        "feedback_date": "date",
+        "phone_number": "phone"
+    },
+    {
+        "name": "Job Application Form",
+        "applicant_name": "text",
+        "applicant_email": "email",
+        "application_date": "date"
+    },
+    {
+        "name": "Survey Form",
+        "respondent_name": "text",
+        "respondent_email": "email",
+        "survey_date": "date"
+    },
+    {
+        "name": "Appointment Form",
+        "client_name": "text",
+        "appointment_date": "date",
+        "contact_phone": "phone"
+    },
+    {
+        "name": "Event Registration Form",
+        "attendee_name": "text",
+        "attendee_email": "email",
+        "registration_date": "date",
+        "attendee_phone": "phone"
+    },
+    {
+        "name": "Booking Form",
+        "customer_name": "text",
+        "customer_email": "email",
+        "booking_date": "date",
+        "contact_number": "phone"
+    },
+    {
+        "name": "Membership Form",
+        "member_name": "text",
+        "member_email": "email",
+        "start_date": "date"
+    },
+    {
+        "name": "Subscription Form",
+        "subscriber_name": "text",
+        "subscriber_email": "email",
+        "subscription_date": "date",
+        "contact_phone": "phone"
+    },
+    {
+        "name": "Complaint Form",
+        "complainant_name": "text",
+        "complainant_email": "email",
+        "complaint_date": "date"
+    }
+]
