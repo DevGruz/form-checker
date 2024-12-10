@@ -57,7 +57,7 @@ docker compose up --build
 
 
 ## Тестирование 
-Для запуска тестов используйте команду: 
+
 Для запуска тестов выполните команду:
 ```bash
 docker compose -f docker-compose.test.yml up --build --abort-on-container-exit --remove-orphans
