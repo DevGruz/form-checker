@@ -23,8 +23,8 @@ class AsyncMongoSettings:
     def get_collection(self) -> AsyncCollection:
         return self._collection
 
-    def client_close(self) -> None:
-        self._client.close()
+    async def client_close(self) -> None:
+        await self._client.close()
 
     async def drop_database(self):
         await self._client.drop_database(self._db_name)

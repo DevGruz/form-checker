@@ -5,16 +5,16 @@ from httpx import AsyncClient, ASGITransport
 from app.main import app, mongo_settings
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="session", autouse=True)
 async def init_db() -> AsyncGenerator[None, None]:
     await mongo_settings.init_db("data/templates.json")
     yield
     await mongo_settings.drop_database()
-    mongo_settings.get_client().close()
+    await mongo_settings.client_close()
 
 
-@pytest.fixture
-async def client(init_db: None) -> AsyncGenerator[AsyncClient, None]:
+@pytest.fixture(scope="session")
+async def client() -> AsyncGenerator[AsyncClient, None]:
     async with AsyncClient(
         transport=ASGITransport(app=app), base_url="http://test"
     ) as async_client:

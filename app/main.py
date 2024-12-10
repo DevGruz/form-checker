@@ -12,7 +12,7 @@ async def lifespan(app: FastAPI):
     if config.INIT_DATA_IN_DATABASE:
         await mongo_settings.init_db("data/templates.json")
     yield
-    mongo_settings.client_close()
+    await mongo_settings.client_close()
 
 
 app = FastAPI(
