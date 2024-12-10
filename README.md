@@ -33,7 +33,7 @@ cd form-checker
 В проекте есть docker-compose.yml файл для быстрой настройки и запуска
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 ### 4. Инициализация базы данных
@@ -51,13 +51,21 @@ docker-compose up --build
 -  **POST /get_form** - Передача динамических параметров формы в формате x-www-form-urlencoded.
 
 
-
-## Тестирование 
-Для проверки работоспособности проекта предусмотрен тестовый скрипт `test_script.py`, находящиеся в каталоге `tests`. 
-
 ## MongoDB & Mongo-Express 
 После запуска через Docker MongoDB будет доступен по адресу `mongodb://localhost:27017`, а mongo-express — по адресу `http://localhost:8081`
 
+
+
+## Тестирование 
+Для запуска тестов используйте команду: 
+Для запуска тестов выполните команду:
+```bash
+docker compose -f docker-compose.test.yml up --build --abort-on-container-exit --remove-orphans
+```
+Эта команда:
+- Строит контейнеры, если есть изменения.
+- Запускает тесты.
+- Останавливает все контейнеры после завершения тестов.
 
 ## Лицензия
 

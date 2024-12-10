@@ -1,21 +1,21 @@
 version: "3.8"
 
 services:
-  app:
+  form-checker-app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
+    container_name: form-checker-app
     depends_on:
-      - mongodb
+      - form-checker-mongodb
     ports:
       - 8000:8000
     networks:
       - app-network
 
-  mongodb:
+  form-checker-mongodb:
     image: mongo:6.0
-    container_name: mongodb
+    container_name: form-checker-mongodb
     restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
@@ -34,13 +34,12 @@ services:
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_ROOT_USERNAME}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_ROOT_PASSWORD}
-      - ME_CONFIG_MONGODB_URL=mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/
+      - ME_CONFIG_MONGODB_URL=mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@form-checker-mongodb:${MONGO_PORT}/
       - ME_CONFIG_BASICAUTH=false
     depends_on:
-      - mongodb
+      - form-checker-mongodb
     networks:
       - app-network
 
 networks:
   app-network:
-

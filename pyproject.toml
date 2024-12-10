@@ -12,8 +12,16 @@ pymongo = "^4.10.1"
 pydantic-settings = "^2.6.1"
 uvicorn = "^0.32.1"
 isort = "^5.13.2"
+pytest = "^8.3.4"
+pytest-asyncio = "^0.24.0"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = [
+    ".", "app",
+]
+asyncio_mode = "auto"

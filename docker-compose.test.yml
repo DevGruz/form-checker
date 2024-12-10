@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  form-checker-app-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: form-checker-app-test
+    depends_on:
+      - form-checker-mongodb-test
+    environment:
+      - MONGO_HOST=form-checker-mongodb-test
+    command: poetry run pytest -x -vv --disable-warnings --maxfail=1
+    networks:
+      - app-network-test
+
+  form-checker-mongodb-test:
+    image: mongo:6.0
+    container_name: form-checker-mongodb-test
+    command: mongod --quiet --logpath /dev/null
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_DATABASE_NAME}
+    networks:
+      - app-network-test
+
+networks:
+  app-network-test:

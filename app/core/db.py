@@ -26,6 +26,9 @@ class AsyncMongoSettings:
     def client_close(self) -> None:
         self._client.close()
 
+    async def drop_database(self):
+        await self._client.drop_database(self._db_name)
+
     async def init_db(self, filename: str) -> str:
         try:
             with open(filename, "r", encoding="utf-8") as file:
@@ -34,7 +37,9 @@ class AsyncMongoSettings:
             print(f"Файл '{filename}' не найден.")
             templates = []
 
-        collection_exists = self._collection_name in await self._db.list_collection_names()
+        collection_exists = (
+            self._collection_name in await self._db.list_collection_names()
+        )
 
         if not collection_exists:
             if templates:
